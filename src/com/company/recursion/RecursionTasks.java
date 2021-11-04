@@ -1,6 +1,6 @@
 package com.company.recursion;
 
-public class Main {
+public class RecursionTasks {
     public static void main(String[] args) {
         System.out.println("Recursion fun");
         System.out.println("Factorial of 5: " + FactorialCalculator.calculate(5));

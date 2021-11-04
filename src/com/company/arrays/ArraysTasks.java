@@ -2,7 +2,7 @@ package com.company.arrays;
 
 import java.util.Arrays;
 
-public class Main {
+public class ArraysTasks {
 
     public static void main(String[] args) {
         int[] array = new int[]{2, 10, 5, 1, 0, 11};

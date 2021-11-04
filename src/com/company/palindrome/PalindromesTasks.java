@@ -1,6 +1,6 @@
 package com.company.palindrome;
 
-public class Main {
+public class PalindromesTasks {
 
     public static void main(String[] args) {
         System.out.println("Palindrome checker");
