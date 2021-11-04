@@ -1,12 +1,14 @@
 package com.company.graph;
 
+import com.company.graph.simple.Graph;
+
 import java.util.Arrays;
 import java.util.Set;
 
 public class GraphsTasks {
 
     public static void main(String[] args) {
-        GraphStructure graph = new GraphStructure();
+        Graph graph = new Graph();
 
         graph.addVertex("Bob");
         graph.addVertex("Alice");

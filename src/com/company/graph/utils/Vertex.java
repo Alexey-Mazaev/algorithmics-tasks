@@ -1,4 +1,4 @@
-package com.company.graph;
+package com.company.graph.utils;
 
 public class Vertex {
 

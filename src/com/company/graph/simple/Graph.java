@@ -1,9 +1,10 @@
-package com.company.graph;
+package com.company.graph.simple;
 
-import java.lang.ref.SoftReference;
+import com.company.graph.utils.Vertex;
+
 import java.util.*;
 
-public class GraphStructure {
+public class Graph {
 
     private final Map<Vertex, List<Vertex>> items = new HashMap<>();
 
