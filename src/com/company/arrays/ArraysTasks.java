@@ -16,12 +16,18 @@ public class ArraysTasks {
 //        System.out.println("Prices array: " + Arrays.toString(prices));
 //        System.out.println("Max profit: " + ArrayOperationsHelper.maxProfit(prices));
 
-        int[] numbers = new int[]{1, 2, 3, 4, 5, 6, 7};
+//        int[] numbers = new int[]{1, 2, 3, 4, 5, 6, 7};
+//
+//        System.out.println("Numbers array: " + Arrays.toString(numbers));
+//        System.out.println("Indices : " + Arrays.toString(ArrayOperationsHelper.indicesElementsGraterThenPrevious(numbers)));
 
-        System.out.println("Numbers array: " + Arrays.toString(numbers));
-        ArrayOperationsHelper.reverseArrayPart(numbers, 3);
+        int[] randomValuesArray = ArrayGenerator.generateTestArray(50, 5, 100);
+        System.out.println("Generated array: " + Arrays.toString(randomValuesArray));
+        System.out.println("Indices: " + Arrays.toString(ArrayOperationsHelper.indicesElementsGraterThenPrevious(randomValuesArray)));
 
-        System.out.println("Array after reverse last 3 digits: " + Arrays.toString(numbers));
+//        ArrayOperationsHelper.reverseArrayPart(numbers, 3);
+//
+//        System.out.println("Array after reverse last 3 digits: " + Arrays.toString(numbers));
 
 //        System.out.println("Reversed array: " + Arrays.toString(ArrayOperationsHelper.reversArray(array)));
 

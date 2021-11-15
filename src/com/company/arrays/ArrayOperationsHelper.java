@@ -1,6 +1,8 @@
 package com.company.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ArrayOperationsHelper {
 
@@ -136,6 +138,28 @@ public class ArrayOperationsHelper {
                 input[j + 1] = input[j];
             }
 
-            input[0] = last;        }
+            input[0] = last;
+        }
+    }
+
+    /**
+     * need to find indices of elements that grater than previous element of array
+     * */
+    public static Integer[] indicesElementsGraterThenPrevious(int[] input) {
+        if (input.length <= 1) {
+            return new Integer[0];
+        }
+
+        List<Integer> output = new ArrayList<>();
+        for (int i = 1; i < input.length; i++){
+            if (input[i - 1] < input[i]) {
+                output.add(i);
+            }
+        }
+
+        Integer[] result = new Integer[output.size()];
+        output.toArray(result);
+
+        return result;
     }
 }
