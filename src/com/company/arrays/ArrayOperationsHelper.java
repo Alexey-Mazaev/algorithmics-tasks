@@ -6,8 +6,7 @@ public class ArrayOperationsHelper {
 
     /**
      * find min element in array
-     *
-     * */
+     */
     public static int findMin(int[] array) {
         int result = array[0];
         for (int i = 1; i < array.length - 1; i++) {
@@ -20,8 +19,7 @@ public class ArrayOperationsHelper {
 
     /**
      * find max element in array
-     *
-     * */
+     */
     public static int findMax(int[] array) {
         int result = array[0];
         for (int i = 1; i < array.length - 1; i++) {
@@ -34,7 +32,6 @@ public class ArrayOperationsHelper {
 
     /**
      * reverse elements in array
-     *
      */
     public static int[] reversArray(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {
@@ -48,8 +45,7 @@ public class ArrayOperationsHelper {
 
     /**
      * find sequence with max sum of element in array
-     *
-     * */
+     */
     public static int[] sequenceWithMaxSum(int[] input) {
         int bestSum = 0;
         int bestStartIndex = 0;
@@ -57,7 +53,7 @@ public class ArrayOperationsHelper {
 
         int currentSum = 0;
         int currentStartIndex = 0;
-        int currentEndIndex = 0;
+        int currentEndIndex;
 
         for (int i = 0; i < input.length; i++) {
             currentEndIndex = i;
@@ -82,8 +78,7 @@ public class ArrayOperationsHelper {
 
     /**
      * find sequence with min sum of elements in array
-     *
-     * */
+     */
     public static int[] sequenceWithMinSum(int[] input) {
         int minSum = Integer.MAX_VALUE;
         int minSumStartIndex = 0;
@@ -91,7 +86,7 @@ public class ArrayOperationsHelper {
 
         int currentSum = 0;
         int currentStartIndex = 0;
-        int currentEndIndex = 0;
+        int currentEndIndex;
 
         for (int i = 0; i < input.length; i++) {
             currentEndIndex = i;
@@ -110,5 +105,37 @@ public class ArrayOperationsHelper {
             }
         }
         return Arrays.copyOfRange(input, minSumStartIndex, minSumEndIndex);
+    }
+
+
+    /**
+     * You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+     * <p>
+     * On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time.
+     * However, you can buy it then immediately sell it on the same day.
+     * <p>
+     * Find and return the maximum profit you can achieve.
+     */
+    public static int maxProfit(int[] prices) {
+        int maxProfit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                maxProfit += prices[i] - prices[i - 1];
+            }
+        }
+
+        return maxProfit;
+    }
+
+    public static void reverseArrayPart(int[] input, int k) {
+        for (int i = 0; i < k; i++) {
+            int last = input[input.length - 1];
+
+            for (int j = input.length - 2; j >= 0; j--) {
+                input[j + 1] = input[j];
+            }
+
+            input[0] = last;        }
     }
 }
