@@ -1,6 +1,10 @@
 package com.company.arrays;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
+
+import static com.company.arrays.ArrayGenerator.generatePackedTestArray;
+import static com.company.arrays.ArrayOperationsHelper.uniqueArrayElements;
 
 public class ArraysTasks {
 
@@ -21,9 +25,9 @@ public class ArraysTasks {
 //        System.out.println("Numbers array: " + Arrays.toString(numbers));
 //        System.out.println("Indices : " + Arrays.toString(ArrayOperationsHelper.indicesElementsGraterThenPrevious(numbers)));
 
-        int[] randomValuesArray = ArrayGenerator.generateTestArray(50, 5, 100);
-        System.out.println("Generated array: " + Arrays.toString(randomValuesArray));
-        System.out.println("Indices: " + Arrays.toString(ArrayOperationsHelper.indicesElementsGraterThenPrevious(randomValuesArray)));
+//        int[] randomValuesArray = ArrayGenerator.generateTestArray(50, 5, 100);
+//        System.out.println("Generated array: " + Arrays.toString(randomValuesArray));
+//        System.out.println("Indices: " + Arrays.toString(ArrayOperationsHelper.indicesElementsGraterThenPrevious(randomValuesArray)));
 
 //        ArrayOperationsHelper.reverseArrayPart(numbers, 3);
 //
@@ -34,5 +38,24 @@ public class ArraysTasks {
 //        System.out.println("After selection sort: " + Arrays.toString(ArraySortHelper.selectionSort(array)));
 //        System.out.println("After bubble sort: " + Arrays.toString(ArraySortHelper.bubbleSort(array)));
 //        System.out.println("After quick sort: " + Arrays.toString(ArraySortHelper.quickSort(array)));
+
+        Integer[] input1 = generatePackedTestArray(1000, 0, 1000);
+        Integer[] input2 = generatePackedTestArray(1500, 0, 1500);
+
+        System.out.println("Array input1: " + Arrays.toString(input1));
+        System.out.println("Array input2: " + Arrays.toString(input2));
+
+        Integer[] input1Uniques = uniqueArrayElements(input1, input2);
+        System.out.println("Input1 uniques: " + Arrays.toString(input1Uniques));
+
+        Integer[] input2Uniques = uniqueArrayElements(input2, input1);
+        System.out.println("Input2 uniques: " + Arrays.toString(input2Uniques));
+
+        Integer[] result = Stream.concat(
+                        Arrays.stream(input1Uniques),
+                        Arrays.stream(input2Uniques))
+                .toArray(Integer[]::new);
+
+        System.out.println("Result array: " + Arrays.toString(result));
     }
 }

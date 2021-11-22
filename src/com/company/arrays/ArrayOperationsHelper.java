@@ -2,6 +2,7 @@ package com.company.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ArrayOperationsHelper {
@@ -154,6 +155,38 @@ public class ArrayOperationsHelper {
         for (int i = 1; i < input.length; i++){
             if (input[i - 1] < input[i]) {
                 output.add(i);
+            }
+        }
+
+        Integer[] result = new Integer[output.size()];
+        output.toArray(result);
+
+        return result;
+    }
+
+    /**
+     * Find unique elements for first and second arrays
+     * */
+    public static Integer[] uniqueArrayElements(Integer[] input1, Integer[] input2) {
+        List<Integer> output = new ArrayList<>();
+
+        if (input1.length == 0) {
+            output.addAll(Arrays.stream(input2).toList());
+        }
+
+        if (input2.length == 0) {
+            output.addAll(Arrays.stream(input1).toList());
+        }
+
+        for (Integer integer : input1) {
+            int j = 0;
+
+            while (j < input2.length && !integer.equals(input2[j])) {
+                j++;
+            }
+
+            if (j == input2.length) {
+                output.add(integer);
             }
         }
 
