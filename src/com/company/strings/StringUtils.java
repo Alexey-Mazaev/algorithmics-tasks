@@ -5,25 +5,10 @@ public class StringUtils {
     public static String lastSurvivors(String input) {
         if (input.length() <= 1) {
             return input;
-        } else if (input.length() == 2) {
-            return swapper(input);
         } else {
-            String result = input;
-
+            String result = swapper(input);
             while (containsRepeatedSymbols(result)) {
-
-                String leftPart = result.substring(0, result.length() / 2);
-                String rightPart = result.substring(result.length() / 2);
-
-                if (containsRepeatedSymbols(leftPart) && containsRepeatedSymbols(rightPart)) {
-                    result = swapper(leftPart) + swapper(rightPart);
-                } else if (containsRepeatedSymbols(leftPart) && !containsRepeatedSymbols(rightPart)) {
-                    result = swapper(leftPart) + rightPart;
-                } else if (!containsRepeatedSymbols(leftPart) && containsRepeatedSymbols(rightPart)) {
-                    result = leftPart + swapper(rightPart);
-                } else if (containsRepeatedSymbols(result)) {
-                    result = swapper(result);
-                }
+                result = swapper(result);
             }
             return result;
         }
@@ -56,12 +41,15 @@ public class StringUtils {
                     currentSymbol = input.charAt(i);
                 }
 
-                int repeatedSymbolIndex = firstRepeatIndex(input, currentSymbol, i + 1);
+                int repeatedSymbolIndex = -1;
                 // searching repeated symbols
                 while (i < input.length() && repeatedSymbolIndex == -1) {
                     currentSymbol = input.charAt(i);
                     repeatedSymbolIndex = firstRepeatIndex(input, currentSymbol, i + 1);
-                    i++;
+
+                    if (repeatedSymbolIndex == -1) {
+                        i++;
+                    }
                 }
 
                 if (repeatedSymbolIndex != -1) {
@@ -69,7 +57,12 @@ public class StringUtils {
                     partWithDubs = increaseToNextSymbol(partWithDubs.charAt(0)) +
                             partWithDubs.substring(1);
 
-                    return input.substring(0, i) + partWithDubs + input.substring(repeatedSymbolIndex + 1);
+                    String leftOne = input.substring(0, i);
+                    String rightOne = input.substring(repeatedSymbolIndex + 1);
+
+                    return swapper(leftOne) +
+                            swapper(partWithDubs) +
+                            swapper(rightOne);
                 } else {
                     return input;
                 }
@@ -104,7 +97,7 @@ public class StringUtils {
     private static boolean containsRepeatedSymbols(String text) {
         for (int i = 0; i < text.length() - 1; i++) {
             char currentSymbol = text.charAt(i);
-            for (int j = 1; j < text.length(); j++) {
+            for (int j = i + 1; j < text.length(); j++) {
                 char nextSymbol = text.charAt(j);
                 boolean containsRepeatedSymbols = Character.isLetter(currentSymbol) &&
                         Character.isLetter(nextSymbol) &&
